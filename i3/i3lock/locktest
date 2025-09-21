@@ -1,0 +1,18 @@
+#!/bin/sh
+lock() {
+  echo "wow"
+}
+
+case "$1" in
+lock)
+  echo 1
+  ;;
+logout)
+  echo 2
+  ;;
+*)
+  echo 3
+  ;;
+esac
+
+#echo "test"
