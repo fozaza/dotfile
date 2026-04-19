@@ -1,3 +1,36 @@
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+exec --no-startup-id feh-bg-loader -l
+exec_always --no-startup-id sh $HOME/.config/i3/script/runner.sh
+# exec_always --no-startup-id sh $HOME/.config/bgrunner/runner.sh
+# exec_always --no-startup-id sh $HOME/.config/i3/memory_runner.sh #> /tmp/i3_mem_log.txt 2>&1
+# exec_always --no-startup-id pkill memory_update ; $HOME/.config/i3/memory_update
+# exec_always --no-startup-id pkill read_memory ; $HOME/.config/i3/read_memory
+set $refresh_i3status killall -SIGUSR1 i3status
+font pango:monospace 8
+
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# bar {
+#         status_command i3status
+# }
+
+for_window [class=".*"] border pixel 4
+gaps inner 10
+gaps outer 5
+smart_borders on
+smart_gaps on
 set $mod Mod1
 
 # Audio
@@ -18,6 +51,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun
 # Restart i3
 bindsym $mod+Shift+r restart
+# memory switch
+bindsym $mod+m exec --no-startup-id $HOME/.config/i3/script/keybinds/memory_switch.sh
 
 # change focus
 bindsym $mod+j focus left
@@ -105,31 +140,3 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
-exec --no-startup-id feh-bg-loader -l
-set $refresh_i3status killall -SIGUSR1 i3status
-font pango:monospace 8
-
-
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
-bar {
-        status_command i3status
-}
-
-for_window [class=".*"] border pixel 4
-gaps inner 10
-gaps outer 5
-smart_borders on
-smart_gaps on
