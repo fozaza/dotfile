@@ -1,0 +1,5 @@
+hour = 22
+minute = 0
+title = "sleep"
+body = "22:00 go to sleep my self"
+type_alert = "CRITICAL"

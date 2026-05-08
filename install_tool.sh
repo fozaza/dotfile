@@ -16,10 +16,10 @@ ctltool.sh ib
 cd ..
 
 # install i3wm-config-builder
-git clone https://github.com/fozaza/i3wm-config-builder.git
-cd i3wm-config-builder
-sh install.sh
-cd ..
+# git clone https://github.com/fozaza/i3wm-config-builder.git
+# cd i3wm-config-builder
+# sh install.sh
+# cd ..
 
 cd $HOME &
 git clone https://aur.archlinux.org/yay.git &

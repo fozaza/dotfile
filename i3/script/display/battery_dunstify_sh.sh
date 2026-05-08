@@ -17,20 +17,26 @@ check_battery_config() {
 }
 oalert=$(check_battery_config $alert_first 50)
 talert=$(check_battery_config $alert_two 20)
+#oalert=100
+#talert=100
 
 if [ $time -le 0 ]; then
   time=60
 fi
 
+battery_alert1_action=0
+battery_alert2_action=0
 battery_life=0
 while true; do
   battery_life=$(cat /sys/class/power_supply/BAT0/capacity)
   echo $battery_life
 
-  if [ $battery_life -le $oalert ]; then
+  if [ $battery_life -le $oalert ] && [ $battery_alert1_action == 0 ]; then
     dunstify "Battert alert" "battery low then $oalert" -u normal
-  elif [ $battery_life -le $talert ]; then
+    battery_alert1_action=1
+  elif [ $battery_life -le $talert ] && [ $battery_alert2_action == 0 ]; then
     dunstify "Battert alert" "battery low then $talert" -u critical
+    battery_alert2_action=1
   fi
   sleep $time
 done
