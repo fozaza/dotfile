@@ -7,5 +7,6 @@ cp -r ./polybar/ ~/.config
 #cp -r ./bgrunner/ ~/.config
 cp -r ./dunst ~/.config
 cp -r ./gtk-3.0 ~/.config
+cp -r ./redshift/ ~/.config
 
 ./xkb/setup.sh
