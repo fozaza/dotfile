@@ -9,6 +9,13 @@ pkill battery_charger_duntify_sh.sh
 pkill i3wm-dunstify-routine
 pkill feh
 
+if ps ax | grep "[r]edshift"; then
+  echo "found redshift process"
+else
+  echo "Start process"
+  redshift
+fi
+
 export LOACL_MEM=$HOME/.local/share/local_mem/
 
 polybar --config=$HOME/.config/polybar/custom/config.ini &
