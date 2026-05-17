@@ -1,35 +1,45 @@
 #!/bin/bash
 
-time=30
-capacity_1=󰁺
-capacity_2=󰁼
-capacity_3=󰁾
-capacity_4=󰂀
-capacity_5=󰁹
+capacity_amin=(󰁺 󰁼 󰁾 󰂀 󰁹)
+battey_list=(10 20 50 75 90)
 capacity=""
+capacity_show=""
 charging=""
 
 while true; do
   battery_life=$(cat /sys/class/power_supply/BAT0/capacity)
   battery_charging=$(cat /sys/class/power_supply/BAT0/status)
 
-  if [ $battery_life -ge 90 ]; then
-    capacity=$capacity_5
-  elif [ $battery_life -ge 75 ]; then
-    capacity=$capacity_4
-  elif [ $battery_life -ge 50 ]; then
-    capacity=$capacity_3
-  elif [ $battery_life -ge 20 ]; then
-    capacity=$capacity_2
-  elif [ $battery_life -ge 10 ]; then
-    capacity=$capacity_1
-  fi
+  for i in "${!capacity_amin[@]}"; do
+    if [ $battery_life -ge "${battey_list[$i]}" ]; then
+      capacity="${capacity_amin[$i]}"
+    fi
+  done
 
   if [ "$battery_charging" == "Discharging" ]; then
     charging=""
   else
-    charging="󱐋"
+    charging="󱐋:"
+    # if [ "$capacity_show" == "" ]; then
+    #   capacity_show="${capacity_amin[0]}"
+    #   echo $charging$capacity_show $battery_life%
+    #   sleep 2
+    #   continue
+    # fi
+    #
+    # for i in "${capacity_amin[@]}"; do
+    #   if [ "${capacity_amin[$i]}" == $capacity_show ]; then
+    #     if [ $i == "${!capacity_amin[@]}" ]; then
+    #       capacity_show="${capacity_show[0]}"
+    #     fi
+    #     capacity_show="${capacity_show[$((i + 1))]}"
+    #   fi
+    # done
+    # echo $charging$capacity_show $battery_life%
+    # sleep 2
+    # continue
   fi
-  echo $charging:$capacity $battery_life%
-  sleep 5
+
+  echo $charging$capacity $battery_life%
+  sleep 2
 done
