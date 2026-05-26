@@ -1,5 +1,6 @@
 const CAPACITY_AMIN: [&str; 5] = ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"];
-const CHARGINH_AMIN: [&str; 5] = ["󰂆", "󰂇", "󰢝", "󰢞", "󰂅"];
+const CHARGINH_AMIN: [&str; 5] = ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"];
+//["󰂆", "󰂇", "󰢝", "󰢞", "󰂅"];
 
 fn main() -> anyhow::Result<()> {
     std::env::set_current_dir("/")?;
@@ -32,14 +33,14 @@ fn main() -> anyhow::Result<()> {
             _ => {
                 if battery_life >= 100 {
                     charging = CHARGINH_AMIN[4];
-                    println!("{charging} {battery_life}%");
+                    println!("󱐋:{charging} {battery_life}%");
                     std::thread::sleep(std::time::Duration::from_secs(2));
                     continue;
                 }
 
                 if charging.is_empty() || charging == CHARGINH_AMIN[4] {
                     charging = CHARGINH_AMIN[0];
-                    println!("{charging} {battery_life}%");
+                    println!("󱐋:{charging} {battery_life}%");
                     std::thread::sleep(std::time::Duration::from_secs(2));
                     continue;
                 }
@@ -51,7 +52,7 @@ fn main() -> anyhow::Result<()> {
                         anim_new = false
                     }
                 }
-                println!("{charging} {battery_life}%");
+                println!("󱐋:{charging} {battery_life}%");
                 std::thread::sleep(std::time::Duration::from_secs(2));
                 continue;
             }
