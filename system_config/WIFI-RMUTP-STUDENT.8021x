@@ -1,0 +1,13 @@
+; /var/lib/iwd/ssid here
+
+[Security]
+EAP-Method=PEAP
+EAP-Identity=056950405141-2
+EAP-Password=1129902069760
+EAP-PEAP-Phase2-Method=MSCHAPV2
+EAP-PEAP-Phase2-Identity=056950405141-2
+EAP-PEAP-Phase2-Password=1129902069760
+
+[Settings]
+AutoConnect=true
+
