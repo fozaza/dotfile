@@ -1,0 +1,74 @@
+configuration {
+	modes: "window,drun,run,ssh";
+  font: "3270 Nerd Font Mono 20";
+
+	show-icons: true;
+  icon-theme: "Papirus";
+
+	display-window: "Window";
+  display-drun: "Application";
+
+  drun-display-format: "{icon} {name}";
+}
+
+@theme "/dev/null"
+
+* {
+  bg: #11121D;
+  bg-alt: #444b6a;
+
+  fg: #FFFFFF;
+  fg-alt: #797c99;
+
+  background-color: @bg;
+
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+}
+
+window {
+  width: 45%;
+}
+
+element {
+  padding: 12; 
+  text-color: @fg-alt;
+}
+
+element selected {
+  text-color: @fg;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+  vertical-align: 0.5;
+}
+
+element-icon {
+  size: 30;
+}
+
+entry {
+  background-color: @bg-alt;
+  padding: 12;
+  text-color: @fg;
+}
+
+inputbar {
+  children: [ prompt, entry ];
+}
+
+listview {
+  background-color: @bg;
+  columns: 1;
+  lines: 8;
+}
+
+prompt {
+  background-color: @bg-alt;
+  padding: 12;
+  text-color: @fg;
+}

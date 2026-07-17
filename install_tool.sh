@@ -29,7 +29,7 @@ cd $HOME &
 rm -rf yay
 
 yay -Syu
-yay -S i3 rofi kitty xkb-switch thunar gvfs dunst fish nodejs redshift --needed
+yay -S i3 rofi kitty xkb-switch thunar gvfs dunst fish nodejs redshift papirus-icon-theme --needed
 
 chsh -s /bin/fish
 sudo chsh -s /bin/fish

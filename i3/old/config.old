@@ -7,7 +7,7 @@ exec_always --no-startup-id sh $HOME/.config/i3/script/runner.sh >/tmp/i3_mem_lo
 # exec_always --no-startup-id sh $HOME/.config/i3/memory_runner.sh #> /tmp/i3_mem_log.txt 2>&1
 # exec_always --no-startup-id pkill memory_update ; $HOME/.config/i3/memory_update
 # exec_always --no-startup-id pkill read_memory ; $HOME/.config/i3/read_memory
-exec_always --no-startup-id pkill redshift ; redshift
+#exec_always --no-startup-id pkill redshift ; redshift
 set $refresh_i3status killall -SIGUSR1 i3status
 font pango:monospace 8
 
@@ -33,6 +33,9 @@ gaps outer 5
 smart_borders on
 smart_gaps on
 set $mod Mod1
+
+#screen shot
+bindsym $mod+shift+s exec main "/home/$USER/Images/-(data +%s).png"
 
 # Audio
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
